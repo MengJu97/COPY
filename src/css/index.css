@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    width: 100%;
+    height: 33px;
+    background-color: #474747;
+}
+
+.wrap {
+    width: 1190px;
+    height: 33px;
+    margin: 0 auto;
+    background-color: orange;
+}
+
+.topBar {
+    height: 104px;
+    width: 100%;
+    border-bottom: 3px solid #de2f3c;
+}
+
+/*轮播图部分*/
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner span {
+    /*border: 1px solid black;*/
+    display: block;
+    width: 47px;
+    height: 80px;
+    position: absolute;
+    z-index: 5;
+}
+
+.banner .less {
+    transform: translateY(-50%);
+    top: 50%;
+    left: 80px;
+    background: url("../image/icons.png") 0 -20px no-repeat;
+}
+
+.banner .great {
+    transform: translateY(-50%);
+    top: 50%;
+    right: 80px;
+    background: url("../image/icons.png") -46px -20px no-repeat;
+}
+
+.banner .less:hover {
+    background-color: #333129;
+    cursor: pointer;
+}
+
+.banner .great:hover {
+    background-color: #333129;
+    cursor: pointer;
+}
+
+.box {
+    width: 100%;
+    height: 439px;
+    border: 1px solid black;
+    position: relative;
+    overflow: hidden;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+}
+
+.box ul {
+    width: 100%;
+    height: 100%;
+    /*overflow: hidden;*/
+    position: relative;
+    left: 0;
+    top: 0;
+    display: flex;
+    list-style: none;
+}
+
+.box ul li {
+    z-index: 3;
+}
+
+.box ul img {
+    width: 1916px;
+    height: 100%;
+}
+
+
+.banner ol {
+    height: 20px;
+    list-style: none;
+    margin-top: -40px;
+    display: flex;
+    z-index: 5;
+}
+
+.banner ol li {
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background-color: white;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.banner ol .active {
+    background-color: #e32430;
+}

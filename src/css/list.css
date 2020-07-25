@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #fafafa;
+}
+
+/*导航栏部分*/
+.header{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+
+.wrap {
+    width: 1200px;
+    height: 300px;
+    /*background-color: #474747;*/
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.blocks {
+    overflow: hidden;
+    position: relative;
+    width: 287px;
+    height: 385px;
+    /*background-color: #c30216;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: all 0.2s;
+    margin-bottom: 14px;
+}
+
+.blocks:hover {
+    transform: translate(0, -2px);
+    box-shadow: 0 3px 3px #CCC;
+}
+
+.blocks img {
+    width: 210px;
+    height: 210px;
+}
+
+.blocks p {
+    margin: 15px 0px 5px;
+    width: 196px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: #474747;
+    text-align: center;
+}
+
+.blocks span {
+    font-size: 18px;
+    color: #eb0303;
+}
+
+.hov {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(00, 00, 00, 0.7);
+    transition: all 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blocks:hover .hov {
+    transform: translateY(-100%);
+}
+
+.hov .btn {
+    width: 200px;
+    height: 50px;
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.hov .btn span {
+    color: white;
+    font-size: 15px;
+}
+
+.hov .btn span::before {
+    content: '';
+    display: inline-block;
+    width: 19px;
+    height: 14px;
+    /*background-color: #c30216;*/
+    margin-right: 5px;
+    background: url("../image/icons.png") -165px -38px no-repeat;
+}
+
+/*.hov .btn:hover span::before {*/
+/*    background: url("../image/icons.png") -165px -20px no-repeat;*/
+/*}*/
+
+.hov .btn:hover{
+    background-color: #e32430;
+    border-color: #e32430;
+}

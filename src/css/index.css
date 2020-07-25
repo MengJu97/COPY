@@ -3,6 +3,19 @@
     padding: 0;
 }
 
+body {
+    color: #474747;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #474747;
+}
+
 .header {
     width: 100%;
     height: 33px;
@@ -22,11 +35,172 @@
     border-bottom: 3px solid #de2f3c;
 }
 
+.topBar .barWrap {
+    display: flex;
+    flex-direction: row;
+    width: 1190px;
+    height: 100%;
+    /*background-color: bisque;*/
+    margin: 0 auto;
+}
+
+.topBar .logo {
+    /*display: inline-block;*/
+    width: 183px;
+    height: 100%;
+    background-color: #c30216;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.topBar .logo img {
+    width: 120px;
+    height: 41px;
+    /*background-color: black;*/
+}
+
+.topBar .market {
+    /*display: inline-block;*/
+    width: 125px;
+    height: 100%;
+    background-color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.topBar .market span {
+    display: block;
+    width: 100%;
+    height: 28px;
+    text-align: center;
+    color: #5d5d5d;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 28px;
+}
+
+.topBar .items {
+    padding-left: 20px;
+    width: 175px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    /*justify-content: center;*/
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.topBar .items::before {
+    content: '';
+    display: inline-block;
+    width: 15px;
+    height: 13px;
+    margin-right: 5px;
+    background: url("../image/icons.png") -24px 0 no-repeat;
+}
+
+.topBar .items:hover {
+    background-color: #de2f3c;
+    color: white;
+}
+
+.topBar .items:hover:before {
+    background: url("../image/icons.png") -39px 0 no-repeat;
+}
+
+.topBar ul {
+    top: 100%;
+    left: 0;
+    width: 175px;
+    /*height: 100px;*/
+    list-style: none;
+    position: absolute;
+    /*background-color: #5d5d5d;*/
+    z-index: 6;
+    display: none;
+}
+
+.topBar ul li {
+    padding-left: 20px;
+    width: 175px;
+    height: 40px;
+    background-color: white;
+    /*margin-bottom: 2px;*/
+    /*text-align: center;*/
+    font-size: 14px;
+    line-height: 40px;
+    color: #474747;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.topBar ul li:hover {
+    color: #c30216;
+    background-color: #f5f5f5;
+}
+
+.topBar .pad li:hover ul {
+    display: block;
+}
+
+.topBar ul li::after {
+    content: '';
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+    /*background-color: orange;*/
+    /*background: url("../image/icons.png") -50px 14px;*/
+    /*background-size: contain;*/
+}
+
+.topBar .down {
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 195px;
+    height: 300px;
+    display: none;
+    /*background: #c30216;*/
+    /*background-color: #f5f5f5;*/
+}
+
+.topBar .down li {
+    background-color: #f5f5f5;
+}
+
+.topBar .down li:hover {
+    background-color: white;
+}
+
+/*导航栏链接部分*/
+.links {
+    width: 353px;
+    height: 100%;
+    /*background-color: #de2f3c;*/
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.links span:hover a {
+    color: #e90404;
+}
+
 /*轮播图部分*/
 .banner {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    height: 441px;
 }
 
 .banner span {
@@ -65,7 +239,7 @@
 .box {
     width: 100%;
     height: 439px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     position: relative;
     overflow: hidden;
     /*display: flex;*/
@@ -102,14 +276,190 @@
 }
 
 .banner ol li {
-    width: 15px;
-    height: 15px;
-    border-radius: 15px;
+    width: 13px;
+    height: 13px;
+    border-radius: 13px;
     background-color: white;
     margin-left: 5px;
     cursor: pointer;
 }
 
+.banner ol li:hover {
+    background-color: #e32430;
+}
+
 .banner ol .active {
     background-color: #e32430;
 }
+
+/*三块广告*/
+.adList {
+    width: 1190px;
+    height: 160px;
+    /*background-color: #474747;*/
+    /*z-index: 10;*/
+    margin: 0 auto;
+    position: absolute;
+    top: 570px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 7;
+}
+
+.adList img {
+    width: 386px;
+    height: 160px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.adList img:hover {
+    /*-webkit-transform: translate(0,-2px);*/
+    /*-moz-transform: translate(0,-2px);*/
+    /*-ms-transform: translate(0,-2px);*/
+    /*-o-transform: translate(0,-2px);*/
+    transform: translate(0, -2px);
+    box-shadow: 0 3px 3px #CCC;
+}
+
+/*商品专区*/
+.cloth {
+    /*height: 2000px;*/
+    width: 100%;
+    background-color: #f5f5f5;
+    margin-top: 185px;
+}
+
+.dota {
+    margin: 0 auto;
+    width: 1190px;
+    height: 727px;
+}
+
+.dota .title {
+    width: 100%;
+    height: 97px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*.dota .title .text{*/
+/*    color: #474747;*/
+/*    font-size: 28px;*/
+/*}*/
+
+.dota .title .tower {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    position: relative;
+    /*margin-right: 12px;*/
+    /*background-color: #de2f3c;*/
+}
+
+.dota .title .tower::after {
+    content: 'Dota2神秘商店';
+    display: inline-block;
+    color: #474747;
+    font-size: 28px;
+    height: 40px;
+    line-height: 40px;
+    width: 500px;
+    text-indent: 47px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.dota .title a {
+    color: #666666;
+    font-size: 16px;
+}
+
+.dota .main {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.dota .leftPart {
+    width: 226px;
+    height: 614px;
+    /*background-color: #c30216;*/
+    margin-right: 15px;
+}
+
+.dota .rightPart {
+    width: 949px;
+    height: 630px;
+    /*background-color: #666666;*/
+}
+
+.main .rightPart .row1 {
+    width: 100%;
+    height: 614px;
+    /*background-color: bisque;*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: space-between;
+}
+
+.main .rightPart .row1 .hot {
+    width: 467px;
+    height: 300px;
+    /*background-color: #c30216;*/
+    transition: all 0.2s;
+}
+
+.main .rightPart .row1 .hot:hover {
+    transform: translate(0, -2px);
+    box-shadow: 0 3px 3px #CCC;
+}
+
+.main .rightPart .row1 .blocks {
+    width: 226px;
+    height: 300px;
+    /*background-color: #c30216;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: all 0.2s;
+}
+
+.main .rightPart .row1 .blocks:hover {
+    transform: translate(0, -2px);
+    box-shadow: 0 3px 3px #CCC;
+}
+
+.main .rightPart .row1 .blocks img {
+    width: 160px;
+    height: 160px;
+}
+
+.main .rightPart .row1 .blocks p {
+    margin: 15px 0px 5px;
+    width: 196px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    color: #474747;
+    text-align: center;
+}
+
+.main .rightPart .row1 .blocks span {
+    font-size: 18px;
+    color: #eb0303;
+}
+

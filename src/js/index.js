@@ -1,4 +1,27 @@
 ;!function () {
+    //检查cookie
+    console.log(document.cookie);
+    if (cookie.get('name')) {
+        let userInfo = $('.userInfo');
+        console.log(userInfo);
+
+        userInfo.innerHTML = `<a href="javascript:;">${cookie.get('name')}</a><span></span><a href="javascript:;" class="logout">退出</a>`;
+        $('.logout').onclick = () => {
+            cookie.remove('name');
+            location.href = 'home.html';
+        }
+    }
+
+
+    //购物车下拉菜单动画效果
+    $('.car').onmouseover = () => {
+        bufferMove($('.incar'), {height: 170});
+        //购物车还没有商品，快去挑选商品吧！
+    }
+    $('.car').onmouseleave = () => {
+        bufferMove($('.incar'), {height: 0});
+    }
+
 //获取接口数据
     const oUl = $('.box ul');
     console.log(oUl);

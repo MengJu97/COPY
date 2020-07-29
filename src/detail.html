@@ -6,6 +6,23 @@
     <link rel="stylesheet" href="./css/detail.css">
 </head>
 <body>
+<!--头部-->
+<div class="header">
+    <div class="hwrap">
+        <span><a href="list.html">回到列表</a></span>
+        <div class="right">
+            <div style="width: 125px" class="userInfo"><a href="./login.html">登录</a><span>|</span><a href="./reg.html">注册</a>
+            </div>
+            <div style="width: 125px"><a href="">我的订单</a><span>|</span><a href="">我的关注</a></div>
+            <div class="car">
+                <div class="icon"></div>
+                <span>购物车</span>(<em>0</em>)
+                <div class="incar"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--商品详情-->
 <div class="wrap">
     <div class="bigPic">
         <ul class="swip">
@@ -17,15 +34,44 @@
             </div>
         </div>
     </div>
+    <div class="mage"></div>
     <div class="info">
         <div class="title">dadad</div>
         <p class="price">dalksjdkl</p>
         <div class="size">
+            <div class="number">
+                <span>数量:</span>
+                <div class="case">
+                    <div class="click mini">
+                    </div>
+                    <input type="text" value="1">
+                    <div class="click plus">
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btns">
+            <a href="javascript:;" class="buy">立即购买</a>
+            <a href="javascript:;" class="car"><span></span>加入购物车</a>
         </div>
     </div>
 </div>
+<div class="success">
+    <div class="close">提示
+        <span></span>
+    </div>
+    <div class="content">
+        <p><span></span>商品已加入到购物车</p>
+    </div>
+    <div class="continue">
+        <a href="javascript:;" class="shopping">继续购物</a>
+        <a href="car.html" class="jump">去购物车查看</a>
+    </div>
+</div>
+<div class="cover">
 
+</div>
 </body>
 <script src="js/tool.js"></script>
 <script src="js/detail.js"></script>

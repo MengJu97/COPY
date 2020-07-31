@@ -8,15 +8,6 @@ body {
     background-color: #fafafa;
 }
 
-/*导航栏部分*/
-/*.header{*/
-/*    width: 100%;*/
-/*    height: 30px;*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*}*/
-
 
 ul {
     list-style: none;
@@ -37,7 +28,6 @@ a {
     width: 1190px;
     height: 33px;
     margin: 0 auto;
-    /*background-color: orange;*/
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -96,7 +86,6 @@ a {
 }
 
 .right .car .icon {
-    /*content: '';*/
     display: inline-block;
     width: 20px;
     height: 14px;
@@ -137,7 +126,6 @@ a {
     top: 33px;
     right: 0;
     width: 350px;
-    /*height: 160px;*/
     background-color: #fafafa;
     box-shadow: 0 2px 3px #CCC;
     z-index: 8;
@@ -167,7 +155,6 @@ a {
     position: relative;
     width: 287px;
     height: 385px;
-    /*background-color: #c30216;*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -240,14 +227,10 @@ a {
     display: inline-block;
     width: 19px;
     height: 14px;
-    /*background-color: #c30216;*/
     margin-right: 5px;
     background: url("../image/icons.png") -165px -38px no-repeat;
 }
 
-/*.hov .btn:hover span::before {*/
-/*    background: url("../image/icons.png") -165px -20px no-repeat;*/
-/*}*/
 
 .hov .btn:hover {
     background-color: #e32430;

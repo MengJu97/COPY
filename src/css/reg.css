@@ -75,7 +75,6 @@ a {
 form {
     width: 396px;
     height: 434px;
-    /*background-color: #f19c9d;*/
 }
 
 form .in {
@@ -91,7 +90,6 @@ form .in {
 }
 
 form .level {
-    /*visibility: hidden;*/
     width: 100%;
     height: 16px;
     margin: 4px 0;

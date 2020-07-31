@@ -27,7 +27,6 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*margin-bottom: 50px;*/
 }
 
 /*错误提示*/
@@ -67,7 +66,6 @@ form {
     align-items: center;
     width: 276px;
     height: 251px;
-    /*background-color: #CCCCCC;*/
 }
 
 form .row {
@@ -131,8 +129,6 @@ form .log {
     width: 100%;
     height: 100px;
     position: relative;
-    /*display: flex;*/
-    /*justify-content: center;*/
 }
 
 form .submit {

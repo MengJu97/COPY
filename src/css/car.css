@@ -75,6 +75,7 @@ thead {
     display: inline-block;
     width: 16px;
     height: 16px;
+    cursor: pointer;
 }
 
 .wrap .state .checkbox:hover .innerbox {
@@ -412,4 +413,126 @@ thead {
     top: 0;
     left: 0;
     background-color: rgba(00, 00, 00, 0.3);
+}
+
+
+/*头部*/
+.header {
+    width: 100%;
+    height: 33px;
+    background-color: #474747;
+    margin-bottom: 30px;
+}
+
+.hwrap {
+    width: 1190px;
+    height: 33px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hwrap span {
+    display: inline-block;
+    width: 100%;
+    line-height: 33px;
+    font-size: 12px;
+    color: #ccc;
+}
+
+.hwrap .right {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hwrap .right span {
+    width: 7px;
+    text-align: center;
+}
+
+.hwrap a {
+    color: #ccc;
+    font-size: 12px;
+    display: inline-block;
+}
+
+
+.hwrap a:hover {
+    color: #FFF;
+}
+
+.right .car {
+    width: 138px;
+    height: 100%;
+    font-size: 12px;
+    background-color: #1e1e1e;
+    color: #666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.right .car span {
+    color: #666;
+    display: inline-block;
+    width: auto;
+    margin-right: 8px;
+}
+
+.right .car .icon {
+    display: inline-block;
+    width: 20px;
+    height: 14px;
+    margin-right: 8px;
+    background: url("../image/icons.png") -164px -20px no-repeat;
+}
+
+.right .car:hover .icon {
+    color: white;
+    background: url("../image/icons.png") -164px -38px no-repeat;
+}
+
+.right .car:hover span {
+    color: white;
+}
+
+.right .car:hover {
+    color: white;
+    background-color: #e32332;
+}
+
+.right .car:hover em {
+    color: white;
+}
+
+
+.right .car em {
+    display: inline-block;
+    height: 100%;
+    font-style: normal;
+    color: #db313e;
+    font-weight: 600;
+    line-height: 33px;
+}
+
+.right .incar {
+    position: absolute;
+    top: 33px;
+    right: 0;
+    width: 350px;
+    background-color: #fafafa;
+    box-shadow: 0 2px 3px #CCC;
+    z-index: 8;
+}
+
+.userInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

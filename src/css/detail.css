@@ -353,6 +353,7 @@ body {
     left: 460px;
     overflow: hidden;
     display: none;
+    box-shadow: 0 2px 3px #CCC;
 }
 
 .wrap .mage img {

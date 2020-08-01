@@ -26,7 +26,7 @@
     let btnMini = $('.mini');
     let btnPlus = $('.plus');
     let numInput = $('.case input');
-    let num = numInput.value;
+    let num = Number(numInput.value);
     // console.log(num);//1
     btnMini.onclick = () => {
         if (num <= 1) {
@@ -43,12 +43,30 @@
     }
 
     numInput.onblur = () => {
-        num = numInput.value;
-        console.log(num);
+
+        let changingNum = numInput.value;
+        //将想要输入的数字临时存下来
+        //用正则判断数字是否合法
+        let reg = /^[0-9]+$/g
+        if (changingNum && reg.test(changingNum)) {//值不为空
+            if (Number(changingNum) >= 99) {
+                num = 99;
+            } else if (Number(changingNum) <= 1) {
+                num = 1;
+            } else {
+                num = Number(changingNum);
+            }
+        }
+        // else {
+        //     //非数字类型，不改变值
+        //
+        // }
+        numInput.value = num;
     }
 
     //添加到购物车提示
     let btnCar = $('.btns .car');
+    let btnBuy = $('.btns .buy');
     let success = $('.success');
     let cover = $('.cover');
     let shopping = $('.shopping');
@@ -163,6 +181,22 @@
             cookie.set('arrNum', arrNum, 7);
             cookie.set('arrPrice', arrPrice, 7);
         }
+
+        btnBuy.onclick = () => {//立即购买
+            let idx = arrSid.indexOf(sid);
+            console.log(idx);
+            if (idx !== -1) {
+                arrNum[idx] = Number(arrNum[idx]) + Number(num);
+            } else {
+                arrSid.push(sid);
+                arrNum.push(num);
+                arrPrice.push(result.price);
+            }
+            cookie.set('arrSid', arrSid, 7);
+            cookie.set('arrNum', arrNum, 7);
+            cookie.set('arrPrice', arrPrice, 7);
+        }
+
 
         let btnClose = $('.close span');
         btnClose.onclick = () => {

@@ -142,7 +142,7 @@ a {
 .wrap {
     width: 1200px;
     height: 300px;
-    margin: 50px auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -344,4 +344,45 @@ a {
     top: 0;
     left: 0;
     background-color: rgba(00, 00, 00, 0.3);
+}
+
+/*选则价格排序方式*/
+.rank {
+    box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    /*background-color: #c30216;*/
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.rank a {
+    display: inline-block;
+    height: 20px;
+    padding: 0 27px;
+    color: #474747;
+    font-size: 14px;
+}
+
+.rank a span {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    width: 6px;
+    height: 12px;
+    margin-left: 7px;
+    /*background: url("../image/icons.png") no-repeat -218px 0px;*/
+}
+
+.rank a:hover {
+    color: #e90404;
+}
+
+.rank span img {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: -218px;
+    top: 0;
 }

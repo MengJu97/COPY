@@ -1,4 +1,16 @@
 ;!function () {
+    //检查cookie
+    console.log(document.cookie);
+    if (cookie.get('name')) {
+        let userInfo = $('.userInfo');
+        console.log(userInfo);
+
+        userInfo.innerHTML = `<a href="javascript:;">${cookie.get('name')}</a><span></span><a href="javascript:;" class="logout">退出</a>`;
+        $('.logout').onclick = () => {
+            cookie.remove('name');
+            location.href = 'home.html';
+        }
+    }
 
     let success = $('.success');
     let cover = $('.cover');

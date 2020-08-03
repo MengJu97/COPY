@@ -1,5 +1,5 @@
 ;!function () {
-
+    let result;
     //检查cookie
     console.log(document.cookie);
     if (cookie.get('name')) {
@@ -13,30 +13,46 @@
         }
     }
 
+    $('.rank a').onmouseover = () => {
+        let status = $('.rank a').getAttribute('class');
+        if (status === 'up') {
+            $('.rank a').children[0].children[0].style.left = -212 + 'px';
+        } else if (status === 'down') {
+            $('.rank a').children[0].children[0].style.left = -206 + 'px';
+        }
+    }
+
+    $('.rank a').onmouseleave = () => {
+        let status = $('.rank a').getAttribute('class');
+        if (status === 'up') {
+            $('.rank a').children[0].children[0].style.left = -218 + 'px';
+        } else if (status === 'down') {
+            $('.rank a').children[0].children[0].style.left = -224 + 'px';
+        }
+    }
+
+    $('.rank a').onclick = () => {
+        let status = $('.rank a').getAttribute('class');
+        if (status === 'up') {
+            $('.rank a').className = 'down';
+            let arr = bubble(result);
+            renderByPrice(arr);
+            $('.rank a').children[0].children[0].style.left = -206 + 'px';
+        } else if (status === 'down') {
+            $('.rank a').className = 'up';
+            let arr = bubble(result);
+            renderByPrice(arr);
+            $('.rank a').children[0].children[0].style.left = -212 + 'px';
+        }
+    }
+
     $ajax({
         url: 'http://localhost/PerfectWord/php/list.php'
     }).then((data) => {
-        let result = JSON.parse(data);
+        result = JSON.parse(data);
         console.log(result);
-        let str = '';
-        for (let value of result) {
-            str += `
-        <div class="blocks">
-        <a href="http://localhost/PerfectWord/src/detail.html?sid=${value.sid}">
-            <img src="${value.url}" alt="">
-        </a>
-        <p>${value.title}</p>
-        <span>¥${value.price}</span>
-        <div class="hov">
-            <div class="btn" sid="${value.sid}" price="${value.price}">
-                <span>加入购物车</span>
-            </div>
-        </div>
-        
-    </div>
-        `
-        }
-        $('.wrap').innerHTML = str;
+        bubble(result);
+        renderByPrice(result);
 
         //渲染完成后
         let arrSid;
@@ -126,9 +142,57 @@
 
     $('.close span').onclick = () => {
         $('.success').style.display = 'none';
+        bubble(result);
+
     }
     $('.shopping').onclick = () => {
         $('.success').style.display = 'none';
+    }
+
+    //按价格高低进行渲染
+    function bubble(arr) {
+        let status = $('.rank a').getAttribute('class');
+
+        for (let i = 0; i < arr.length - 1; i++) {
+            for (let j = 0; j < arr.length - i - 1; j++) {
+                if (status === 'up') {
+                    if (Number(arr[j].price) > Number(arr[j + 1].price)) {
+                        let temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                } else {
+                    let temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+
+            }
+        }
+        return arr;
+    }
+
+
+    function renderByPrice(result) {
+        let str = '';
+        for (let value of result) {
+            str += `
+            <div class="blocks">
+            <a href="http://localhost/PerfectWord/src/detail.html?sid=${value.sid}">
+                <img src="${value.url}" alt="">
+            </a>
+            <p>${value.title}</p>
+            <span>¥${value.price}</span>
+            <div class="hov">
+                <div class="btn" sid="${value.sid}" price="${value.price}">
+                    <span>加入购物车</span>
+                </div>
+            </div>
+
+        </div>
+            `
+        }
+        $('.wrap').innerHTML = str;
     }
 
 }();

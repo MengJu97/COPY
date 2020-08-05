@@ -62,43 +62,91 @@ export let main = {
                     limitArrPrice = cookie.get('arrPrice').split(',');
 
 
-                    for (let i = 0; i < arrSid.length; i++) {
-                        str += `<tr class="item" index="${i}" sid="${arrSid[i]}">
+                    //             for (let i = 0; i < arrSid.length; i++) {
+                    //                 str += `<tr class="item" index="${i}" sid="${arrSid[i]}">
+                    //     <td class="state">
+                    //             <span class="checkbox" index="${i}" sid="${arrSid[i]}">
+                    //                 <span class="innerbox" index="${i}" sid="${arrSid[i]}">
+                    //
+                    //                 </span>
+                    //             </span>
+                    //     </td>
+                    //     <td class="name">
+                    //         <a href="detail.html?sid=${arrSid[i]}" class="pic"><img src="${result[Number(arrSid[i]) - 1].url}" alt=""></a>
+                    //         <a href="detail.html?sid=${arrSid[i]}" class="title">${result[Number(arrSid[i]) - 1].title}</a>
+                    //     </td>
+                    //     <td class="discount"></td>
+                    //     <td class="num">
+                    //         <div class="number">
+                    //             <div class="case">
+                    //                 <div class="click mini" index="${i}" sid="${arrSid[i]}">
+                    //                 </div>
+                    //                 <input type="text" value="${arrNum[i]}" sid="${arrSid[i]}" index="${i}">
+                    //                 <div class="click plus" index="${i}" sid="${arrSid[i]}">
+                    //                 </div>
+                    //             </div>
+                    //         </div>
+                    //     </td>
+                    //     <td class="prices">
+                    //         <p>¥<span>${(Number(arrPrice[i]) * Number(arrNum[i])).toFixed(2)}</span></p>
+                    //     </td>
+                    //     <td class="operation">
+                    //         <a href="javascript:;" class="del" sid="${arrSid[i]}">
+                    //             <span sid="${arrSid[i]}"></span>
+                    //         </a>
+                    //     </td>
+                    // </tr>`
+                    //             }
+                    //
+                    //             $('table').innerHTML += str;
+                    order(arrSid, arrNum, arrPrice);
+
+                    // $('.prices').onclick = () => {
+                    //     let arrSid = cookie.get('arrSid').split(',');
+                    //     let arrNum = cookie.get('arrNum').split(',');
+                    //     let arrPrice = cookie.get('arrPrice').split(',');
+                    //
+                    // }
+
+                    function order(arr, num, price) {
+                        for (let i = 0; i < arr.length; i++) {
+                            str += `<tr class="item" sid="${arr[i]}">
             <td class="state">
-                    <span class="checkbox" index="${i}" sid="${arrSid[i]}">
-                        <span class="innerbox" index="${i}" sid="${arrSid[i]}">
+                    <span class="checkbox"  sid="${arr[i]}">
+                        <span class="innerbox" sid="${arr[i]}">
 
                         </span>
                     </span>
             </td>
             <td class="name">
-                <a href="detail.html?sid=${arrSid[i]}" class="pic"><img src="${result[Number(arrSid[i]) - 1].url}" alt=""></a>
-                <a href="detail.html?sid=${arrSid[i]}" class="title">${result[Number(arrSid[i]) - 1].title}</a>
+                <a href="detail.html?sid=${arr[i]}" class="pic"><img src="${result[Number(arr[i]) - 1].url}" alt=""></a>
+                <a href="detail.html?sid=${arr[i]}" class="title">${result[Number(arr[i]) - 1].title}</a>
             </td>
             <td class="discount"></td>
             <td class="num">
                 <div class="number">
                     <div class="case">
-                        <div class="click mini" index="${i}" sid="${arrSid[i]}">
+                        <div class="click mini"  sid="${arrSid[i]}">
                         </div>
-                        <input type="text" value="${arrNum[i]}" sid="${arrSid[i]}" index="${i}">
-                        <div class="click plus" index="${i}" sid="${arrSid[i]}">
+                        <input type="text" value="${num[i]}" sid="${arr[i]}">
+                        <div class="click plus"  sid="${arr[i]}">
                         </div>
                     </div>
                 </div>
             </td>
             <td class="prices">
-                <p>¥<span>${(Number(arrPrice[i]) * Number(arrNum[i])).toFixed(2)}</span></p>
+                <p>¥<span>${(Number(price[i]) * Number(num[i])).toFixed(2)}</span></p>
             </td>
             <td class="operation">
-                <a href="javascript:;" class="del" sid="${arrSid[i]}">
-                    <span sid="${arrSid[i]}"></span>
+                <a href="javascript:;" class="del" sid="${arr[i]}">
+                    <span sid="${arr[i]}"></span>
                 </a>
             </td>
         </tr>`
-                    }
+                        }
 
-                    $('table').innerHTML += str;
+                        $('table').innerHTML += str;
+                    }
 
                     //--------------全选--------------
                     let innerbox = $('.innerbox', 1);
@@ -190,23 +238,6 @@ export let main = {
                                 console.log('取消单个商品前的勾选框时的零时数组：' + limitArrNum);
                                 arrPrice = cookie.get('arrPrice').split(',');
                                 innerbox = $('.innerbox', 1);
-
-                                // let calcArr = limitArrNum.map((value, index) => {
-                                //     if (index != idx) {
-                                //         if (value != arrNum[index]) {
-                                //             return 0;
-                                //         } else {
-                                //             if (innerbox[index + 1].getAttribute('checked') === 'true') {
-                                //                 return value;
-                                //             } else {
-                                //                 return 0;
-                                //             }
-                                //         }
-                                //     } else {
-                                //         return value;
-                                //     }
-                                // })
-                                // console.log(calcArr);
 
                                 let calcArr = toCalcArr(idx);
                                 refresh(calcArr, arrPrice);
@@ -523,6 +554,26 @@ export let main = {
             checkoutPrice.innerHTML = price.toFixed(2);
         }
 
+        $('.delSelection').onclick = () => {
+            let arr = [];
+            let innerbox = $('.innerbox', 1);
+            for (let i = 0; i < innerbox.length; i++) {
+                console.log(innerbox[i]);
+                if (innerbox[i].getAttribute('sid') && innerbox[i].getAttribute('checked') === 'true') {
+                    arr.push(innerbox[i]);
+                }
+            }
+            console.log(arr);
+            // console.log(arr[0].getAttribute('sid'));
+            for (let i = 0; i < arr.length; i++) {
+                let arrSid = cookie.get('arrSid').split(',');
+                deleteIdx = arrSid.indexOf(arr[i].getAttribute('sid'));
+                removeTarget = arr[i].parentNode.parentNode.parentNode;
+                shopping.onclick();
+            }
+
+        }
+
         //点击删除按钮删除条目方法
         shopping.onclick = function deleteItem() {
 
@@ -647,6 +698,15 @@ export let main = {
     detailJs: function () {
         //检查cookie
         console.log(document.cookie);
+        if (cookie.get('arrSid')) {
+            let carNum = $('.car em');
+            let arrNum = cookie.get('arrNum').split(',');
+            let arrSid = cookie.get('arrSid').split(',');
+            carNum.innerHTML = arrNum.reduce((previousValue, currentValue) => {
+                return Number(previousValue) + Number(currentValue);
+            }, 0)
+        }
+
         if (cookie.get('name')) {
             let userInfo = $('.userInfo');
             console.log(userInfo);
@@ -748,11 +808,25 @@ export let main = {
         }).then((data) => {
             let result = JSON.parse(data)[0];
             console.log(result);
+            $('title').innerText = `${result.title}`
+            $('.hwrap span').innerHTML += `&nbsp;&nbsp;>&nbsp;&nbsp;<a href="http://localhost/COPY/src/detail.html?sid=${result.sid}">${result.title}</a>`;
             let imgArr = result.pics.split(',');
+            console.log(result.info);
+            let picsArr = result.info.split(',');
+            console.log(picsArr);
             console.log(imgArr);
             let str = '';
             let sm = '';
             let index = 0;
+            let picsStr = '';
+            for (let value of picsArr) {
+                picsStr += `
+                <img src="${value}" alt="">
+     `
+            }
+            $('.details').innerHTML += picsStr;
+
+
             for (let value of imgArr) {
                 str += `<li index="${index}"><div class="smallGlass"></div><img src="${value}" alt=""></li>`;
                 sm += `<div class="xm" index="${index}">
@@ -854,6 +928,32 @@ export let main = {
             shopping.onclick = () => {
                 btnClose.onclick();
             }
+
+
+            //    商品推荐商品详情
+            $ajax({url: 'http://localhost/COPY/php/list.php'}).then((data) => {
+                let list = JSON.parse(data);
+                // console.log(result.sid);
+                list = list.filter((value) => {
+                    if (value.sid !== result.sid) {
+                        return value;
+                    }
+                })
+                list = list.splice(0, 10);
+                console.log(list);
+                let str = '';
+                for (let value of list) {
+                    str += `
+                    <div class="recommend">
+                    <a href="http://localhost/COPY/src/detail.html?sid=${value.sid}"><img src="${value.url}" alt=""></a>
+                    <p class="item_title">${value.title}</p>
+                    <p class="item_price">¥${value.price}</p>
+                    </div>
+                    `
+                }
+                $('.guess_like').innerHTML += str;
+
+            })
 
 
         })
@@ -1207,6 +1307,28 @@ export let main = {
         let totalPage;
         arrowState();
         //检查cookie
+        // if (cookie.get('arrSid')) {
+        //     let carNum = $('.car em');
+        //     let arrNum = cookie.get('arrNum').split(',');
+        //     let arrSid = cookie.get('arrSid').split(',');
+        //     carNum.innerHTML = arrNum.reduce((previousValue, currentValue) => {
+        //         return Number(previousValue) + Number(currentValue);
+        //     }, 0)
+        // }
+
+        function refresh() {
+            if (cookie.get('arrSid')) {
+                let carNum = $('.car em');
+                let arrNum = cookie.get('arrNum').split(',');
+                let arrSid = cookie.get('arrSid').split(',');
+                carNum.innerHTML = arrNum.reduce((previousValue, currentValue) => {
+                    return Number(previousValue) + Number(currentValue);
+                }, 0)
+            }
+        }
+
+        refresh();
+
         if (cookie.get('name')) {
             let userInfo = $('.userInfo');
             console.log(userInfo);
@@ -1277,7 +1399,7 @@ export let main = {
         }
 
         $ajax({
-            url: 'http://localhost/PerfectWord/php/list.php'
+            url: 'http://localhost/COPY/php/list.php'
         }).then((data) => {
             let arrSid;
             let arrNum;
@@ -1350,7 +1472,7 @@ export let main = {
                     cookie.set('arrSid', arrSid, 7);
                     cookie.set('arrNum', arrNum, 7);
                     cookie.set('arrPrice', arrPrice, 7);
-
+                    refresh();
 
                     //添加成功提示
                     $('.success').style.display = 'block';
@@ -1412,7 +1534,7 @@ export let main = {
             for (let value of render) {
                 str += `
             <div class="blocks">
-            <a href="http://localhost/PerfectWord/src/detail.html?sid=${value.sid}">
+            <a href="http://localhost/COPY/src/detail.html?sid=${value.sid}">
                 <img src="${value.url}" alt="">
             </a>
             <p>${value.title}</p>
@@ -1529,7 +1651,7 @@ export let main = {
 
 
         $ajax({
-            url: 'http://localhost/PerfectWord/php/index1.php'
+            url: 'http://localhost/COPY/php/index1.php'
         }).then(function (data) {
             let result = JSON.parse(data);
             console.log(result);
@@ -1654,71 +1776,6 @@ export let main = {
                 greatMove();
             }
 
-            // let str = '';
-            // for (let value of banner) {
-            //     str += `<li><img src="${value.url}" alt=""></li>`
-            // }
-            // oUl.innerHTML = str;
-            // let dot = '';
-            // for (let i = 1; i <= banner.length; i++) {
-            //     dot += `<li index="${i}"></li>`;
-            // }
-            // oOl.innerHTML = dot;
-            // oImgList = $('.box li', 1);
-            // oActive = $('ol li', 1);
-            // //圆点事件委托
-            // oOl.onclick = (event) => {
-            //     clearInterval(timer)
-            //     var event = event || window.event;
-            //     let target = event.target;
-            //     moveTimes = parseInt(target.getAttribute('index'));
-            // }
-            // console.log(oImgList);
-            // console.log(oActive);
-            // for (let i = 0; i < oImgList.length; i++) {
-            //     oImgList[i].setAttribute('index', i);
-            // }
-            // btnLess.onclick = () => {
-            //     clearInterval(timer)
-            //     let less;
-            //     if (moveTimes === 0) {
-            //         less = -2 * 1916;
-            //         moveTimes = 2;
-            //     } else {
-            //         moveTimes--;
-            //         less = -1916 * moveTimes;
-            //     }
-            //     bufferMove(oUl, {left: less});
-            //     changeActive(moveTimes);
-            // }
-            //
-            // btnGreat.onclick = () => {
-            //     let more;
-            //     if (moveTimes === 2) {
-            //         more = 0;
-            //         moveTimes = 0;
-            //     } else {
-            //         moveTimes++;
-            //         more = -1916 * moveTimes;
-            //
-            //     }
-            //     bufferMove(oUl, {left: more});
-            //     changeActive(moveTimes);
-            // }
-            //
-            // function changeActive(idx = 0) {
-            //     //清除样式
-            //     for (let i = 0; i < oActive.length; i++) {
-            //         oActive[i].className = '';
-            //         oActive[idx].className = 'active';
-            //     }
-            // }
-            //
-            // changeActive();
-            // let timer = setInterval(() => {
-            //     btnGreat.onclick();
-            // }, 3000)
-            // <img src="${banner[index].url}" alt="" style="left: ${pos[index]}%">-->
 
             //三块广告渲染
             let threeAd = result.banner.slice(3);
@@ -1739,18 +1796,30 @@ export let main = {
             </a>
         </div>
                         `;
-            for (let value of result.home) {
-                reWrite += `
-            <div class="blocks">
-                        <a href="">
-                            <img src="${value.url}" alt="">
-                        </a>
-                        <p>${value.title}</p>
-                        <span>¥${value.price}</span>
-                    </div>`
-            }
+
             $('.row1').innerHTML = reWrite;
             $('.leftPart').innerHTML = `<img src="${result.dota[2].url}" alt="">`
+
+            $ajax({
+                url: 'http://localhost/COPY/php/list.php'
+            }).then((data) => {
+                // console.log(data);
+                let result = JSON.parse(data).splice(0, 6);
+                console.log(result);
+                let str = '';
+                for (let value of result) {
+                    str += `
+                    <div class="blocks">
+                         <a href="http://localhost/COPY/src/detail.html?sid=${value.sid}">
+                            <img src="${value.url}" alt="">
+                         </a>
+                        <p>${value.title}</p>
+                        <span>¥${value.price}</span>
+                    </div>
+                    `
+                }
+                $('.row1').innerHTML += str;
+            })
         })
 
     }

@@ -1,0 +1,1 @@
+"use strict";var _main=require("./main.js");_main.main.loginJs();
